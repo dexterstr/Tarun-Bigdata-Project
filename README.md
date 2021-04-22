@@ -26,7 +26,7 @@ To pull the data into notebook we use urllib.request to pull data from a url and
 # Import the library for processing url request.
 import urllib.request
 # Store the data by retrieving into a temporary file
-urllib.request.urlretrieve("t" , "/tmp/tarun.txt")
+urllib.request.urlretrieve("https://github.com/dexterstr/Tarun-Bigdata-Project/blob/main/The_Great_Gatsby.txt" , "/tmp/tarun.txt")
 
 ```
 
@@ -99,20 +99,27 @@ print(sort_results)
 We will be using MatplotLib to plot graph.
 
 ```
-mostCommon=results[1:5]
-word,count = zip(*mostCommon)
+import pandas as pd
 import matplotlib.pyplot as plt
-fig = plt.figure()
-plt.bar(word,count,color="black")
-plt.xlabel("Number of times used")
-plt.ylabel("Most used")
-plt.title("Most used words in The Monk")
-plt.show()
+import seaborn as sns
+
+source = 'Great Gatsby'
+title = 'The ' + source
+xlabel = 'Count'
+ylabel = 'Words'
+df = pd.DataFrame.from_records(sort_results, columns =[xlabel, ylabel]) 
+plt.figure(figsize=(10,3))
+sns.barplot(xlabel, ylabel, data=df, color="black").set_title(title)
+
+
 ```
 
 # Results
 
-![Sorting]()
-![Results]()
+![Sorting](https://github.com/dexterstr/Tarun-Bigdata-Project/blob/main/Sorting.PNG)
+![Results](https://github.com/dexterstr/Tarun-Bigdata-Project/blob/main/Charting.PNG)
 
 # References
+- [DataBricks](https://community.cloud.databricks.com/?o=7861382908486399)
+- [PySpark](https://spark.apache.org/docs/latest/api/python/index.html)
+- [Pandas](https://pandas.pydata.org/)
